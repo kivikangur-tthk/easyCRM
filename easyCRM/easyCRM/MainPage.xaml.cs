@@ -1,8 +1,10 @@
-﻿using Plugin.Messaging;
+﻿using Newtonsoft.Json;
+using Plugin.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -24,7 +26,12 @@ namespace easyCRM
             call_btn = new Button { Text = "Helista" }; call_btn.Clicked += Call_btn_Clicked;
             sms_btn = new Button { Text = "Saada sms" }; sms_btn.Clicked += Sms_btn_Clicked;
             sub = new Button { Text = "Lisa arve" }; sub.Clicked += Sub_Clicked;
-
+            name = new EntryCell
+            {
+                Label = "Customer name",
+                Placeholder = "Enter customer name",
+                Keyboard = Keyboard.Default
+            };
             phone = new EntryCell
             {
                 Label = "Telefon:",
@@ -97,9 +104,22 @@ namespace easyCRM
 
         }
 
-        private void Sub_Clicked(object sender, EventArgs e)
+        private async void Sub_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var client = new HttpClient();
+            var model = new FeedbackModel()
+            {
+                Name = name.Text,
+                PhoneNumber = phone.Text,
+                OrderDate = date.Text,
+                Amount = amount.Text
+            };
+            var uri = "https://script.google.com/macros/s/AKfycbx5enUV7yJdlnjFR07fEYLG3vDwS2nkoEBuXocLY7GndwtxBwReCri4ltEP95nlUdqfpg/exec";
+            var jsonString = JsonConvert.SerializeObject(model);
+            var requestContent = new StringContent(jsonString);
+            var result = await client.PostAsync(uri, requestContent);
+            var resultContent = await result.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<ResponseModel>(resultContent);
         }
 
         private void Sms_btn_Clicked(object sender, EventArgs e)
