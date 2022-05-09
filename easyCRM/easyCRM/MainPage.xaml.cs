@@ -17,12 +17,13 @@ namespace easyCRM
         TableSection fotosection, nuppud;
         Button sms_btn;
         Button call_btn;
-        Button email_btn;
+        Button sub;
         StackLayout st;
         public MainPage()
         {
             call_btn = new Button { Text = "Helista" }; call_btn.Clicked += Call_btn_Clicked;
             sms_btn = new Button { Text = "Saada sms" }; sms_btn.Clicked += Sms_btn_Clicked;
+            sub = new Button { Text = "Lisa arve" }; sub.Clicked += Sub_Clicked;
 
             phone = new EntryCell
             {
@@ -50,7 +51,7 @@ namespace easyCRM
             };
             st = new StackLayout
             {
-                Children = { call_btn, sms_btn, email_btn },
+                Children = { call_btn, sms_btn, sub },
                 Orientation = StackOrientation.Horizontal
             };
             nuppud = new TableSection
@@ -94,6 +95,11 @@ namespace easyCRM
             Content = tableView;
 
 
+        }
+
+        private void Sub_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Sms_btn_Clicked(object sender, EventArgs e)
