@@ -1,5 +1,5 @@
 # easyCRM for small buisness
-Developers: Zahar Makarov, Valeria Karpova, Roman Ljah students of TTHK
+Developers: Zakhar Makarov, Valeria Karpova, Roman Ljah students of TTHK
 
 IDE - Xamarin Forms
 
