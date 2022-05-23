@@ -5,4 +5,8 @@ IDE - Xamarin Forms
 
 Programming language - c#, Mobile development with .NET
 
-Installation way: download from GitHub.
+Installation way: 
+
+ 1  install Visual Studio 2022
+ 3  download from GitHub.
+ 3 
