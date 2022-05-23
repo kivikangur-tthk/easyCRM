@@ -8,6 +8,6 @@ Programming language - c#, Mobile development with .NET
 Installation way:
 
 - install Visual Studio
-2 download from GitHub.
-4 run project
+- download from GitHub.
+- run project
 
