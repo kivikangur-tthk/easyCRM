@@ -5,4 +5,4 @@ IDE - Xamarin Forms
 
 Programming language - c#, Mobile development with .NET
 
-Installation way: download from GitHub.
+Installation way: download from GitHub. Kristjan oli siin
